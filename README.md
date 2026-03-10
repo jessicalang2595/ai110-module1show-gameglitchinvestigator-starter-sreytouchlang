@@ -1,38 +1,88 @@
-# 🎮 Game Glitch Investigator: The Impossible Guesser
+# 🎮 Game Glitch Investigator
 
-## 🚨 The Situation
+A Streamlit number guessing game that started with several AI-generated bugs. In this project, I investigated the glitches, fixed the broken game logic, added tests, and reflected on how I used AI as a debugging teammate.
 
-You asked an AI to build a simple "Number Guessing Game" using Streamlit.
-It wrote the code, ran away, and now the game is unplayable. 
+## Demo
 
-- You can't win.
-- The hints lie to you.
-- The secret number seems to have commitment issues.
+This project is a number guessing game built with Streamlit.
 
-## 🛠️ Setup
+Features:
+- Difficulty levels: Easy, Normal, Hard
+- Score tracking
+- Guess history
+- Hint feedback for high and low guesses
+- Debug panel for testing during development
 
-1. Install dependencies: `pip install -r requirements.txt`
-2. Run the broken app: `python -m streamlit run app.py`
+To run the app locally:
 
-## 🕵️‍♂️ Your Mission
+```bash
+python3 -m streamlit run app.py
+```
 
-1. **Play the game.** Open the "Developer Debug Info" tab in the app to see the secret number. Try to win.
-2. **Find the State Bug.** Why does the secret number change every time you click "Submit"? Ask ChatGPT: *"How do I keep a variable from resetting in Streamlit when I click a button?"*
-3. **Fix the Logic.** The hints ("Higher/Lower") are wrong. Fix them.
-4. **Refactor & Test.** - Move the logic into `logic_utils.py`.
-   - Run `pytest` in your terminal.
-   - Keep fixing until all tests pass!
+To run the tests:
 
-## 📝 Document Your Experience
+```bash
+python3 -m pytest
+```
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+## What Was Broken
 
-## 📸 Demo
+When I started, the game had several issues:
+* Hint messages were confusing or incorrect
+* Difficulty ranges did not always match expected behavior
+* Some logic was hard to test because game logic and UI were mixed together
+* The score and guess handling needed verification through testing
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
+## Fixes I Made
 
-## 🚀 Stretch Features
+I repaired the game by:
+* Moving reusable game logic into `logic_utils.py`
+* Fixing the guessing logic
+* Correcting the hint behavior
+* Improving reset and game flow behavior
+* Adding automated pytest tests
+* Rewriting the reflection with clear explanations of what I fixed and how I verified it
 
-- [ ] [If you choose to complete Challenge 4, insert a screenshot of your Enhanced Game UI here]
+## Files in This Project
+
+* `app.py` – Streamlit UI and game state
+* `logic_utils.py` – helper functions for game logic
+* `tests/test_game_logic.py` – pytest test cases
+* `reflection.md` – reflection on debugging and AI collaboration
+
+## Document Your Experience
+
+This project helped me practice debugging AI-generated code instead of blindly trusting it. AI was useful for speeding up code review and suggesting refactors, but I still had to verify each change carefully by running the app and checking test results.
+
+One helpful suggestion was separating the game logic from the Streamlit UI so the functions could be tested more easily. A less helpful part was that some suggested fixes did not fully match the app behavior, so I had to review and adjust them myself.
+
+Overall, this project showed me that AI can be a strong teammate, but human judgment is still necessary to confirm whether the fix is actually correct.
+
+## How to Run
+
+1. Clone the repository
+2. Create and activate a virtual environment
+3. Install dependencies
+4. Run the Streamlit app
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+python3 -m pip install -r requirements.txt
+python3 -m streamlit run app.py
+```
+
+## Test the Project
+
+```bash
+python3 -m pytest
+```
+
+## Reflection
+
+See `reflection.md` for:
+* What bugs I found
+* How I used AI as a teammate
+* How I tested my fixes
+* What I learned about Streamlit session state
+* What habits I want to keep using in future projects
